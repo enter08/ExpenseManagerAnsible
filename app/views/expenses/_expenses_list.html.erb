@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+    <%= render 'categories_list_index' %>
+      <div class="col-md-9">
+        <center>
+          <span style="font-size: 11px", class="label label-primary">Budget: <%= number_with_precision(@budget, :precision => 2, :delimiter => ',') %></span> <span style="font-size: 11px", class="label label-primary">Expenses: <%= number_with_precision(@total, :precision => 2, :delimiter => ',') %></span> 
+          <% if @money_left > 0 %>
+            <span style="font-size: 11px", class="label label-warning">Money left: <%= number_with_precision(@money_left, :precision => 2, :delimiter => ',') %></span>
+          <% else %>
+            <span style="font-size: 11px", class="label label-danger">Deficit: <%= number_with_precision(@money_left, :precision => 2, :delimiter => ',') %></span>
+          <% end %>
+          <div class="row"><%= content_tag :div, "", id: "expenses-chart", data: {expenses: expenses_chart_data} %>
+        </div>
+        <% if @budget >= @total.abs %>
+          <div class="progress progress-striped active">
+            <div class="progress-bar"  role="progressbar" aria-valuenow="<%= @percentage%>" aria-valuemin="0" aria-valuemax="100" style="width: <%= @percentage%>%">
+              <span class="sr-only"><%= @percentage%>% Complete</span>
+            </div>
+          </div>
+        <% else %>
+          <div class="progress">
+            <div class="progress-bar progress-bar-danger" style="width: 100%">
+              <span class="sr-only">100% Complete (danger)</span>
+            </div>
+          </div>
+        <% end %>
+        </center>
+        <% @expenses.each_with_index do |expense, index| %>
+          <% if index % 4 == 0 %>
+            <div class="row">
+          <% end %>
+            <div class="col-md-3">
+              <div class="thumbnail">
+                <div class="caption">
+                <% if expense.category.name == "Family & Personal" %>
+                  <h3 class="ex_c">Personal</h3>
+                <% else %>
+                  <h3 class="ex_c"><%= expense.category.name %></h3>
+                <% end %>
+                  <%= expense.date.strftime("%d. %B,  %Y.") %>
+                  <% if expense.location %>
+                    <% if expense.location.name == "Abroad" %>
+                      <br/><span style="font-size:12px;"><%= expense.location.name %></span>
+                    <% else %>
+                      <br/><span style="font-size:12px;">In: <%= expense.location.name %></span>
+                    <% end %>
+                  <% end %>
+                </div>
+                <%= image_tag expense.bill.url(:medium), size: '170x105' %>
+                <div class="caption">
+                  <p><center><h4 class="ex_v">
+                  <% if expense.outcome == true %>
+                  <span style="color:red" class="glyphicon glyphicon-download"></span>&nbsp;&nbsp;<%= -expense.expense_value.abs %>€ 
+                  <% else %>
+                  <span style="color:green" class="glyphicon glyphicon-upload"></span>&nbsp;&nbsp;<%= expense.expense_value %>€ 
+                  <% end %>
+                  </h4></center></p>
+                  <p align="center">
+                    <%= link_to expense_path(expense), class: "btn btn-primary", role: "button" do %>
+                        <span style="font-size:10px;">Show</span>
+                     <% end %>
+                    <%= link_to edit_expense_path(expense), class: "btn btn-default", role: "button" do %>
+                      <span style="font-size:10px;">Edit</span>
+                    <% end %>
+                    <%= link_to expense_path(expense), class: "btn btn-default", method: :delete, data: {confirm: 'Are you sure?', role: "button"} do %>
+                      <span style="font-size:10px;">Delete</span>
+                    <% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% if index % 4 == 3 %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<center><%= will_paginate @expenses %></center>

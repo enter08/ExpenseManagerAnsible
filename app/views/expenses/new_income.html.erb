@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Expense manager</title>
+	</head>
+	<body>
+	<%= render 'expenses/shared/error' %>
+	<div class="container">
+		<div class="row">
+			<%= render 'categories_list' %>
+		<div class="col-md-2">
+		</div>
+		<div class="col-md-5">
+	    	<div class="row">
+	    	<br/>
+	            <div class="thumbnail">
+	            	<ul class="nav nav-tabs">
+						<li> 
+							<%= link_to "Outcome", new_expense_path %>
+						</li>
+						<li class="active">
+						<%= link_to "Income" %>
+						</li>
+						<div class="panel panel-default">
+							<div align="right" class="panel-heading">Expense Manager</div>
+							<div class="panel-body">
+							    <%= render :partial => 'income_form'  %>
+							</div>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+		</div>
+		</div>
+	</div>
+	</body>
+</html>

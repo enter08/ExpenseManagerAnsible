@@ -1,0 +1,107 @@
+// @import "bootswatch/cerulean/variables";
+@import "bootstrap";
+// @import "bootswatch/cerulean/bootswatch";
+
+
+.input-group-addon {
+	background-color: #FFFFFF;
+	font-size: 0em;
+	border: 0px;
+}
+
+.container {
+	width: 97%;
+}
+
+html,body{
+    height: 100%
+}
+
+#holder{
+    min-height: 100%;
+    position:relative;
+}
+
+.page h4.ex_c { font-size: 48px;}
+
+#body{
+    padding-bottom: 100px;    /* height of footer */
+}
+
+#push,
+#footer {    
+	height: 60px; 
+    width:100%;
+    position: static;
+    left: 0;
+    bottom: 0; 
+}
+#footer {
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+a.list-group-item.active1, a.list-group-item.active1:hover, a.list-group-item.active1:focus {
+    z-index: 2;
+    color: white;
+    background-color: #819FF7;
+    border-color: #819FF7; }
+
+.center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#error_explanation {
+  @extend .alert;
+  @extend .alert-error;
+  @extend .alert-block;
+}
+
+.field_with_errors {
+  @extend .control-group.error
+}
+
+
+#expenses-chart{
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+}
+
+#expenses-chart-week{
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+}
+
+#income_chart{
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+}
+
+#expenses-chart2{
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+}
+
+#categs_chart{
+  display: inline-block;
+  height: 200px;
+  width: 100%;
+}
+
+.morris-hover{position:absolute;z-index:1000;}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255, 255, 255, 0.8);border:solid 2px rgba(230, 230, 230, 0.8);font-family:sans-serif;font-size:12px;text-align:center;}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0;}
+.morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0;}
