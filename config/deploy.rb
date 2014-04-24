@@ -15,7 +15,7 @@ set :deploy_user, "deployer"
 # Default value for :scm is :git
 set :scm, :git
 
-set :repo_url, 'git@github.com:enter08/Expense-Manager.git'
+set :repo_url, 'git@github.com:enter08/ExpenseManagerAnsible.git'
 
 set :rbenv_type, :user # or :system, depends on your rbenv setup
 set :rbenv_ruby, '2.1.0'
@@ -47,6 +47,8 @@ set :linked_files, %w{config/database.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
+
+set :tests, ["spec"]
 
 set(:config_files, %w(
   nginx_unicorn
