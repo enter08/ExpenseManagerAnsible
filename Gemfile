@@ -9,7 +9,10 @@ gem "select2-rails"
 gem 'execjs'
 gem 'therubyracer', '~> 0.12.1'
 gem 'backup'
-gem 'searchkick'
+#gem 'searchkick'
+gem 'logstasher'
+gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
+gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 
 # group :assets do
 # 	gem 'morrisjs-rails'
@@ -23,9 +26,8 @@ end
 gem 'factory_girl_rails', '4.2.1'
 
 group :test do
-	gem 'simplecov-rcov'
-	gem 'simplecov'
-	gem 'brakeman', :require => false
+  gem 'simplecov-rcov'
+  gem 'simplecov'
   gem 'ci_reporter', '1.8.0'
   gem 'capybara', '2.1.0'
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
@@ -81,12 +83,13 @@ end
 # Use unicorn as the app server
 gem 'unicorn'
 
-# Use Capistrano for deployment
+gem 'brakeman', :require => false
 
 gem 'capistrano', '~> 3.1'
 gem 'capistrano-rails', '~> 1.1'
 gem 'capistrano-rbenv', '~> 2.0'
 gem 'capistrano-bundler', '~> 1.1.2'
+
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
