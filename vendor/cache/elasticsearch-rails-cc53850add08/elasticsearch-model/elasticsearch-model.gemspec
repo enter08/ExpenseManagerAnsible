@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.require_paths = ["lib"]
   s.authors = ["Karel Minarik"]
-  s.date = "2014-04-25"
+  s.date = "2014-05-14"
   s.description = "ActiveModel/Record integrations for Elasticsearch."
   s.email = ["karel.minarik@elasticsearch.org"]
   s.extra_rdoc_files = ["README.md", "LICENSE.txt"]
